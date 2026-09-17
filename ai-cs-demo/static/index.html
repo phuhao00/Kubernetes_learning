@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 客服 Demo · 个人实践项目</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>AI 智能客服 Demo</h1>
+      <p class="subtitle">个人实践 · 模拟企业流程 · 知识库检索 + 可选 LLM 润色</p>
+    </div>
+    <span class="badge" id="modeBadge">检索模式</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel chat-panel">
+      <h2>用户对话</h2>
+      <div id="chatMessages" class="chat-messages"></div>
+      <form id="chatForm" class="chat-form">
+        <input id="chatInput" type="text" placeholder="请输入您的问题，例如：怎么重置密码？" autocomplete="off" />
+        <button type="submit">发送</button>
+      </form>
+      <div class="quick-prompts">
+        <button type="button" data-prompt="怎么重置密码">重置密码</button>
+        <button type="button" data-prompt="支持什么支付方式">支付方式</button>
+        <button type="button" data-prompt="你们有火星分店吗">转人工测试</button>
+      </div>
+    </section>
+
+    <section class="panel admin-panel">
+      <h2>知识库管理</h2>
+
+      <div class="admin-block">
+        <h3>导入 FAQ</h3>
+        <div class="import-row">
+          <input type="file" id="csvFile" accept=".csv" />
+          <button type="button" id="uploadCsvBtn">上传 CSV</button>
+        </div>
+        <textarea id="pasteArea" rows="4" placeholder="或粘贴 CSV 文本：question,answer,keywords"></textarea>
+        <button type="button" id="pasteImportBtn">粘贴导入</button>
+      </div>
+
+      <div class="admin-block">
+        <h3>新增 / 编辑</h3>
+        <form id="faqForm">
+          <input type="hidden" id="faqId" />
+          <label>问题 <input id="faqQuestion" required /></label>
+          <label>答案 <textarea id="faqAnswer" rows="3" required></textarea></label>
+          <label>关键词（逗号分隔） <input id="faqKeywords" placeholder="退款,退货" /></label>
+          <label class="checkbox"><input type="checkbox" id="faqEnabled" checked /> 启用</label>
+          <div class="form-actions">
+            <button type="submit">保存</button>
+            <button type="button" id="resetFormBtn" class="secondary">清空</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="admin-block">
+        <h3>FAQ 列表 <span id="faqCount" class="count"></span></h3>
+        <div id="faqList" class="faq-list"></div>
+      </div>
+
+      <div class="admin-block">
+        <h3>待人工处理 <span id="humanCount" class="count"></span></h3>
+        <div id="humanQueue" class="human-queue"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

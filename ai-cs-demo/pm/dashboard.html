@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>项目 Dashboard · AI 客服 Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; background: #0f172a; color: #e2e8f0; padding: 1.5rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.25rem; }
+    .sub { color: #94a3b8; font-size: 0.85rem; margin-bottom: 1.5rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .card { background: #1e293b; border-radius: 12px; padding: 1.25rem; border: 1px solid #334155; }
+    .card h2 { font-size: 0.8rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+    .big { font-size: 2.2rem; font-weight: 700; color: #38bdf8; }
+    .progress-bar { height: 10px; background: #334155; border-radius: 5px; margin-top: 0.5rem; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, #2563eb, #38bdf8); border-radius: 5px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { padding: 0.6rem; text-align: left; border-bottom: 1px solid #334155; }
+    th { color: #94a3b8; font-weight: 500; }
+    .status-done { color: #34d399; }
+    .status-active { color: #fbbf24; }
+    .status-open { color: #f87171; }
+    .risk-item { padding: 0.5rem 0; border-bottom: 1px solid #334155; font-size: 0.9rem; }
+    .tag { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px; font-size: 0.75rem; margin-right: 0.35rem; }
+    .tag-high { background: #7f1d1d; color: #fecaca; }
+    .tag-med { background: #78350f; color: #fde68a; }
+    ul { padding-left: 1.2rem; line-height: 1.8; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <h1>AI 智能客服 Demo · 项目 Dashboard</h1>
+  <p class="sub">个人实践 · 模拟企业流程 · 更新日期：2026-09-26（M4 验收周）</p>
+
+  <div class="grid">
+    <div class="card">
+      <h2>整体完成度</h2>
+      <div class="big">92%</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
+      <p style="margin-top:0.5rem;font-size:0.8rem;color:#94a3b8">M5 文档收尾中</p>
+    </div>
+    <div class="card">
+      <h2>当前里程碑</h2>
+      <div class="big" style="font-size:1.4rem;color:#fbbf24">M4 验收</div>
+      <p style="font-size:0.85rem;margin-top:0.5rem">三场景 3/3 通过</p>
+    </div>
+    <div class="card">
+      <h2>开放风险</h2>
+      <div class="big" style="color:#f87171">2</div>
+      <p style="font-size:0.85rem;margin-top:0.5rem">R-02, D-01</p>
+    </div>
+    <div class="card">
+      <h2>变更请求</h2>
+      <div class="big" style="color:#a78bfa">3</div>
+      <p style="font-size:0.85rem;margin-top:0.5rem">均已批准并关闭</p>
+    </div>
+  </div>
+
+  <div class="grid" style="grid-template-columns: 1fr 1fr;">
+    <div class="card">
+      <h2>里程碑状态</h2>
+      <table>
+        <tr><th>里程碑</th><th>计划</th><th>状态</th></tr>
+        <tr><td>M1 需求范围确认</td><td>09-05</td><td class="status-done">✓ 完成</td></tr>
+        <tr><td>M2 方案/原型确认</td><td>09-12</td><td class="status-done">✓ 完成</td></tr>
+        <tr><td>M3 Demo核心功能</td><td>09-22</td><td class="status-done">✓ 完成</td></tr>
+        <tr><td>M4 Demo验收完成</td><td>09-26</td><td class="status-active">● 进行中</td></tr>
+        <tr><td>M5 交付与复盘</td><td>10-03</td><td>待开始</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h2>开放风险</h2>
+      <div class="risk-item"><span class="tag tag-med">R-02</span>无 API Key 时仅能展示检索模式</div>
+      <div class="risk-item"><span class="tag tag-med">D-01</span>LLM 外部 API 可用性依赖</div>
+      <p style="margin-top:0.75rem;font-size:0.8rem;color:#94a3b8">均已制定 fallback，不阻塞验收</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:1rem;">
+    <h2>本周重点（W3 · 09-22 ~ 09-26）</h2>
+    <ul>
+      <li>✅ 完成聊天检索 + 转人工联调</li>
+      <li>✅ 执行三场景验收（命中 / 转人工 / 导入后提问）</li>
+      <li>✅ 检索阈值调优（0.18 → 命中率与误报平衡）</li>
+      <li>🔄 补齐 PM Dashboard 与周报</li>
+      <li>⏳ M5：复盘文档 + 面试话术 + Git PR</li>
+    </ul>
+  </div>
+</body>
+</html>
